@@ -11,6 +11,7 @@
     "port": "22",
     "user": "root",
     "secret": "2345678",
-    "media_root_dir": "/home/media/vod1"
+    "media_root_dir": "/home/media/vod1",
+    "mount_dev": "/dev/mapper/mpathbp1"
   }
 }

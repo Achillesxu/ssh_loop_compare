@@ -27,7 +27,8 @@ TREE_FILE_REC = 'media_ts_ifo.txt'
 
 def get_cmd_str(in_dir_root, *in_child):
     cd_path = os.path.join(in_dir_root, *in_child)
-    return 'ls -Al ' + cd_path
+    return 'mount -t xfs ' + parameters_parser.para_dict['child_node']['mount_dev']\
+           + ' ' + in_dir_root + ';ls -Al ' + cd_path
 
 
 def file_name_yield(in_file_object):
