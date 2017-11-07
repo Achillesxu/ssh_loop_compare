@@ -1,0 +1,16 @@
+{
+  "parent_node": {
+    "ip": "",
+    "port": "",
+    "user": "root",
+    "secret": "2345678",
+    "media_root_dir": ""
+  },
+  "child_node": {
+    "ip": "10.255.56.25",
+    "port": "22",
+    "user": "root",
+    "secret": "2345678",
+    "media_root_dir": "/home/media/vod1"
+  }
+}
