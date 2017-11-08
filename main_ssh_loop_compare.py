@@ -17,26 +17,38 @@ import logging
 from tools import parameters_parser
 
 from tools.ssh_connection import SSHConnect
-from tools.string_parser import StrParser
+from tools.tool_functions import get_cmd_str, file_name_yield
+
 
 r_log = logging.getLogger(parameters_parser.MY_LOG_NAME)
 
 
 def main():
-    cmd_list = ['ls -al /home/git/mss', ]
-    in_ip1, in_port1, in_user1, in_code1 = '118.190.113.100', '22', 'root', 'QPmeixun@#2017'
-    ssh_con = SSHConnect(in_ip1, in_port1, in_user1, in_code1)
-    is_ok = ssh_con.connect_server()
-    if is_ok:
-        for ci in cmd_list:
-            o_stdin, o_stdout, o_stderr = ssh_con.exec_command(ci)
-            if o_stdin is not None and o_stdout is not None and o_stderr is not None:
-                out1 = o_stdout.readlines()
-                for oi in out1:
-                    print(StrParser.ls_dir_file_split(oi))
-            else:
-                print('command <{}> failed'.format(ci))
-    ssh_con.disconnect_server()
+    in_ip1, in_port1, in_user1, in_code1 = parameters_parser.para_dict['child_node']['ip'],\
+                                           parameters_parser.para_dict['child_node']['port'],\
+                                           parameters_parser.para_dict['child_node']['user'],\
+                                           parameters_parser.para_dict['child_node']['secret']
+    ssh_con_gs = SSHConnect(in_ip1, in_port1, in_user1, in_code1)
+
+    in_ip2, in_port2, in_user2, in_code2 = parameters_parser.para_dict['parent_node']['ip'], \
+                                           parameters_parser.para_dict['parent_node']['port'],\
+                                           parameters_parser.para_dict['parent_node']['user'],\
+                                           parameters_parser.para_dict['parent_node']['secret']
+
+    ssh_con_th = SSHConnect(in_ip2, in_port2, in_user2, in_code2)
+
+    is_ok_gs = ssh_con_gs.connect_server()
+    is_ok_th = ssh_con_th.connect_server()
+
+    if is_ok_gs and is_ok_th:
+        both_con = 1
+    else:
+        both_con = 0
+
+    if both_con:
+        pass
+    else:
+        pass
 
 
 if __name__ == '__main__':

@@ -1,10 +1,10 @@
 {
   "parent_node": {
-    "ip": "",
-    "port": "",
+    "ip": "192.168.51.30",
+    "port": "22",
     "user": "root",
-    "secret": "2345678",
-    "media_root_dir": ""
+    "secret": "root123",
+    "media_root_dir": "/storage/block2/media/tianhua"
   },
   "child_node": {
     "ip": "10.255.56.25",
