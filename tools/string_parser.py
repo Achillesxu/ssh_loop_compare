@@ -30,7 +30,7 @@ class StrParser(object):
         f_links = Word(nums, min=1)
         f_user = f_group = Word(alphanums, min=1)
         f_size = Word(nums, min=1)
-        f_time = Regex(r'(?<=\d )\d{1,2}\w +\d{1,2} [0-9\:]{4,5}(?= )')
+        f_time = Regex(r'(?<=\d )\w{3} +\d{1,2} [0-9\:]{4,5}(?= )')
         f_name = Regex(r'(?<=\d ).+(?=\n)')
 
         f_in_str = f_type + f_links + f_user + f_group + f_size + f_time + f_name
