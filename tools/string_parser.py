@@ -12,7 +12,7 @@
 @desc :
 """
 import logging
-from pyparsing import Word, nums, alphas, alphanums, printables, Optional, OneOrMore, Combine, ParseException
+from pyparsing import Word, nums, alphas, alphanums, printables, Regex, OneOrMore, Combine, ParseException
 
 from tools import parameters_parser
 
@@ -30,8 +30,8 @@ class StrParser(object):
         f_links = Word(nums, min=1)
         f_user = f_group = Word(alphanums, min=1)
         f_size = Word(nums, min=1)
-        f_time = Combine(Word(alphas) + OneOrMore(' ') + Word(nums) + OneOrMore(' ') + Word(nums + ':'))
-        f_name = Word(printables)
+        f_time = Regex(r'(?<=\d )\d{1,2}\w +\d{1,2} [0-9\:]{4,5}(?= )')
+        f_name = Regex(r'(?<=\d ).+(?=\n)')
 
         f_in_str = f_type + f_links + f_user + f_group + f_size + f_time + f_name
         try:
@@ -46,7 +46,8 @@ class StrParser(object):
 
 
 if __name__ == '__main__':
-
-    test_str = 'drwxr-xr-x  7 git  git      4096 Aug  3 10:30 wxpython.git'
-    res_token = StrParser.ls_dir_file_split(test_str)
-    print(res_token)
+    fp = open('/Users/achilles_xushy/Desktop/python2/ssh_loop_compare/media_name_list.txt', mode='rt')
+    for ii in fp:
+        res_token = StrParser.ls_dir_file_split(ii)
+        print(res_token)
+    fp.close()
