@@ -46,9 +46,19 @@ def main():
         both_con = 0
 
     if both_con:
-        pass
+        m_file_list_cmd = get_cmd_str(parameters_parser.para_dict['child_node']['media_root_dir'])
+        o_stdin, o_stdout, o_stderr = ssh_con_gs.exec_command(m_file_list_cmd)
+        if o_stdin is not None and o_stdout is not None and o_stderr is not None:
+            pass
+
     else:
-        pass
+        if is_ok_gs is not True:
+            print('10.255.56.19 ssh connect <{}>'.format(parameters_parser.para_dict['child_node']['ip']))
+        if is_ok_th is not True:
+            print('10.255.56.19 ssh connect <{}>'.format(parameters_parser.para_dict['parent_node']['ip']))
+
+    ssh_con_gs.disconnect_server()
+    ssh_con_th.disconnect_server()
 
 
 if __name__ == '__main__':

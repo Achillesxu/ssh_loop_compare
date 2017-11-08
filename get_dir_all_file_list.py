@@ -118,20 +118,16 @@ def main_output_empty_or_greater_five():
                                 o_stdin_2, o_stdout_2, o_stderr_2 = ssh_con.exec_command(m_ts_ifo_list_cmd)
                                 if o_stdin_2 is not None and o_stdout_2 is not None and o_stderr_2 is not None:
                                     try:
-                                        write_record_to_file(TREE_FILE_REC, i_f)
-                                        write_record_to_file(TREE_FILE_REC, '\t' + i_s)
                                         m_ts_info_list = [i for i in file_name_yield(o_stdout_2)]
                                         if m_ts_info_list:
                                             ts_list = [i for i in list_str_end_yield(m_ts_info_list, '.git')]
                                             ifo_list = [i for i in list_str_end_yield(m_ts_info_list, '.ifo')]
 
-                                            if len(ts_list) != len(ifo_list):
+                                            if len(ts_list) >= 5 or len(ifo_list) >= 5:
+                                                write_record_to_file(TREE_FILE_REC, i_f)
+                                                write_record_to_file(TREE_FILE_REC, '\t' + i_s)
                                                 for i_t in m_ts_info_list:
                                                     write_record_to_file(TREE_FILE_REC, '\t\t' + i_t)
-                                            elif len(ts_list) >= 5 or len(ifo_list) >= 5:
-                                                for i_t in m_ts_info_list:
-                                                    write_record_to_file(TREE_FILE_REC, '\t\t' + i_t)
-
                                         else:
                                             write_record_to_file(TREE_FILE_REC, i_f)
                                             write_record_to_file(TREE_FILE_REC, '\t' + i_s)
