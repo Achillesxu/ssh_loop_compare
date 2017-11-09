@@ -45,6 +45,8 @@ def main():
                 sys.exit(-1)
             for i_f in m_file_list:
                 write_record_to_file(TREE_FILE_REC, i_f)
+                if ' ' in i_f:
+                    i_f = i_f.replace(' ', '\ ')
                 m_f_serial_str = get_cmd_str(parameters_parser.para_dict['child_node']['media_root_dir'],
                                              i_f, 'media')
                 o_stdin_1, o_stdout_1, o_stderr_1 = ssh_con.exec_command(m_f_serial_str)
@@ -103,6 +105,8 @@ def main_output_empty_or_greater_five():
                 print('command <{}> get file list failed, error <{}> program exit'.format(m_file_list_cmd, e))
                 sys.exit(-1)
             for i_f in m_file_list:
+                if ' ' in i_f:
+                    i_f = i_f.replace(' ', '\ ')
                 m_f_serial_str = get_cmd_str(parameters_parser.para_dict['child_node']['media_root_dir'],
                                              i_f, 'media')
                 o_stdin_1, o_stdout_1, o_stderr_1 = ssh_con.exec_command(m_f_serial_str)
@@ -124,18 +128,18 @@ def main_output_empty_or_greater_five():
                                             ifo_list = [i for i in list_str_end_yield(m_ts_info_list, '.ifo')]
 
                                             if len(ts_list) >= 5 or len(ifo_list) >= 5:
-                                                write_record_to_file(TREE_FILE_REC, i_f)
-                                                write_record_to_file(TREE_FILE_REC, '\t' + i_s)
+                                                write_record_to_file(TREE_FILE_FIVE_EMPTY, i_f)
+                                                write_record_to_file(TREE_FILE_FIVE_EMPTY, '\t' + i_s)
                                                 for i_t in m_ts_info_list:
-                                                    write_record_to_file(TREE_FILE_REC, '\t\t' + i_t)
+                                                    write_record_to_file(TREE_FILE_FIVE_EMPTY, '\t\t' + i_t)
                                         else:
-                                            write_record_to_file(TREE_FILE_REC, i_f)
-                                            write_record_to_file(TREE_FILE_REC, '\t' + i_s)
+                                            write_record_to_file(TREE_FILE_FIVE_EMPTY, i_f)
+                                            write_record_to_file(TREE_FILE_FIVE_EMPTY, '\t' + i_s)
                                     except Exception as e:
                                         print('command <{}> get file list failed, error <{}> program exit'.format(
                                             m_ts_ifo_list_cmd, e))
                         else:
-                            write_record_to_file(TREE_FILE_REC, i_f)
+                            write_record_to_file(TREE_FILE_FIVE_EMPTY, i_f)
                     except Exception as e:
                         print(
                             'command <{}> get file list failed, error <{}> program exit'.format(m_f_serial_str, e))

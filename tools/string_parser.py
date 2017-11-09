@@ -11,6 +11,7 @@
 @File : string_parser.py
 @desc :
 """
+import os
 import logging
 from pyparsing import Word, nums, alphas, alphanums, printables, Regex, OneOrMore, Combine, ParseException
 
@@ -46,8 +47,14 @@ class StrParser(object):
 
 
 if __name__ == '__main__':
-    fp = open('/Users/achilles_xushy/Desktop/python2/ssh_loop_compare/media_name_list.txt', mode='rt')
-    for ii in fp:
-        res_token = StrParser.ls_dir_file_split(ii)
-        print(res_token)
-    fp.close()
+    # fp = open('/Users/achilles_xushy/Desktop/python2/ssh_loop_compare/media_name_list.txt', mode='rt')
+    # for ii in fp:
+    #     res_token = StrParser.ls_dir_file_split(ii)
+    #     print(res_token)
+    # fp.close()
+    test_str = '-rwxrwxrwx. 1 root root 51962824 May   2 2017 爆笑虫子01：冰淇淋_[国网ott-1920x1080-4000k-mp2 ]\n'
+    res_token = StrParser.ls_dir_file_split(test_str)
+    print(res_token)
+    # print(os.path.basename(res_token[6]))
+
+
