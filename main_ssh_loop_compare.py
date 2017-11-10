@@ -62,7 +62,7 @@ def main():
                 m_p_dir_str = find_cmd_dir_str(parameters_parser.para_dict['parent_node']['media_root_dir'], i_f)
                 o_in_th, o_out_th, o_err_th = ssh_con_th.exec_command(m_p_dir_str)
                 if o_in_th is not None:
-                    o_dir_th_list = [i for i in o_in_th]
+                    o_dir_th_list = [i for i in o_out_th]
                     if len(o_dir_th_list) == 0:
                         write_record_to_file(DIR_PROBLEM, '<{}> in child and not in parent'.format(i_f))
                         continue
