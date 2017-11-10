@@ -33,7 +33,7 @@ def find_cmd_dir_str(in_dir_root, in_sear_str):
 def file_name_yield(in_file_object, in_size=0):
     for i in in_file_object:
         file_rec_list = StrParser.ls_dir_file_split(i)
-        if file_rec_list is not None and len(file_rec_list) == 6:
+        if file_rec_list is not None and len(file_rec_list) == 7:
             if in_size:
                 yield (file_rec_list[4], file_rec_list[6])
             else:
@@ -44,7 +44,7 @@ def file_key_name_yield(in_file_object, in_key):
     for i in in_file_object:
         if in_key and in_key in i:
             file_rec_list = StrParser.ls_dir_file_split(i)
-            if file_rec_list is not None and len(file_rec_list) == 6:
+            if file_rec_list is not None and len(file_rec_list) == 7:
                 yield (file_rec_list[4], file_rec_list[6])
 
 
