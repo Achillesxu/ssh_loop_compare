@@ -82,10 +82,7 @@ if __name__ == '__main__':
     # for i in test_str:
     #     print(find_cmd_dir_str('/storage/block2/media/tianhua', i))
 
-    t_t_1 = [(223, '大海'), (224, '中的相同元素'), (226, '如果使用表理解')]
-    t_t_2 = [(223, '大海'), (225, '中的相同元素')]
-    diff_l1 = find_diff_item_in_lists(t_t_1, t_t_2)
-    print(diff_l1)
+    print(get_cmd_str('/storage/block2/media/tianhua/电影/最后一站', 'media'))
 
 
 

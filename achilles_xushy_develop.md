@@ -12,3 +12,4 @@
 ## 2017-11-09 扫描甘肃分平台的媒资信息 与总平台对比 
     1. 完成 main_ssh_loop_compare.py 直接运行，运算时间比较长
     2. 对比总平台与甘肃平台的目录get_parent_child_more_dir.py
+    3. 修复文件语义错误

@@ -72,7 +72,7 @@ def main():
                 m_f_serial_str = get_cmd_str(parameters_parser.para_dict['child_node']['media_root_dir'],
                                              i_f, 'media')
                 o_stdin_1, o_stdout_1, o_stderr_1 = ssh_con_gs.exec_command(m_f_serial_str)
-                m_p_serial_str = get_cmd_str(o_dir_th_list[0], 'media')
+                m_p_serial_str = get_cmd_str(o_dir_th_list[0].rstrip('\n'), 'media')
                 o_in_th1, o_out_th1, o_err_th1 = ssh_con_th.exec_command(m_p_serial_str)
                 if o_stdin_1 is not None and o_in_th1 is not None:
                     m_serial_list = [i for i in file_name_yield(o_stdout_1)]
@@ -96,7 +96,7 @@ def main():
                                 i_f, 'media', i_s, 'video')
                             o_stdin_2, o_stdout_2, o_stderr_2 = ssh_con_gs.exec_command(m_ts_ifo_list_cmd)
 
-                            m_p_ts_ifo_list_cmd = get_cmd_str(o_dir_th_list[0], 'media', i_s, 'video')
+                            m_p_ts_ifo_list_cmd = get_cmd_str(o_dir_th_list[0].rstrip('\n'), 'media', i_s, 'video')
                             o_in_th2, o_out_th2, o_err_th2 = ssh_con_th.exec_command(m_p_ts_ifo_list_cmd)
 
                             if o_stdin_2 is not None and o_in_th2 is not None:
