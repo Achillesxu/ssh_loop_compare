@@ -31,7 +31,7 @@ class StrParser(object):
         f_links = Word(nums, min=1)
         f_user = f_group = Word(alphanums, min=1)
         f_size = Word(nums, min=1)
-        f_time = Regex(r'(?<=\d )\w{3} +\d{1,2} [0-9\:]{4,5}(?= )')
+        f_time = Regex(r'(?<=\d )\w{3} +\d{1,2} +[0-9\:]{4,5}(?= )')
         f_name = Regex(r'(?<=\d ).+(?=\n)')
 
         f_in_str = f_type + f_links + f_user + f_group + f_size + f_time + f_name
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     #     res_token = StrParser.ls_dir_file_split(ii)
     #     print(res_token)
     # fp.close()
-    test_str = '-rwxrwxrwx. 1 root root 51962824 May   2 2017 爆笑虫子01：冰淇淋_[国网ott-1920x1080-4000k-mp2 ]\n'
+    test_str = 'drwxrwxrwx. 5 root root 60 May  6  2017 30十单身贩售\n'
     res_token = StrParser.ls_dir_file_split(test_str)
     print(res_token)
     # print(os.path.basename(res_token[6]))
